@@ -1,18 +1,17 @@
-import styled from 'styled-components';
 import './App.css';
+import SearchInput from './components/SearchInput';
+import { AppWrapper } from './styledComponents/styles';
+import gotImage from './assets/images/got-logo.png';
 
 function App() {
   return (
-    <div className="app">
-      <Title>Test</Title>
-    </div>
+    <AppWrapper>
+      <header>
+        <img src={gotImage} />
+      </header>
+      <SearchInput />
+    </AppWrapper>
   );
 }
 
 export default App;
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
