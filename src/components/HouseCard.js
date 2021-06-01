@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import houseLogoMartel from '../assets/images/house-logo-martel.jpeg';
 import sigilAlgood from '../assets/images/250px-House_Algood-sigil.webp';
 
-const HouseCard = ({ houseData }) => {
+const HouseCard = ({ houseData }, props) => {
+  const { name, ...rest } = houseData;
+
   return (
     <StyledHouseCardWrapper>
       <div className="imageWrapper">
@@ -15,7 +17,7 @@ const HouseCard = ({ houseData }) => {
           <img src={sigilAlgood} alt="" />
         </div>
         <div className="textBox">
-          <h3>{houseData.name}</h3>
+          <h3>{name}</h3>
         </div>
       </div>
     </StyledHouseCardWrapper>
