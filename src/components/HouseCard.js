@@ -15,7 +15,7 @@ const HouseCard = ({ houseData }) => {
           <img src={sigilAlgood} alt="" />
         </div>
         <div className="textBox">
-          <h3>Martel</h3>
+          <h3>{houseData.name}</h3>
         </div>
       </div>
     </StyledHouseCardWrapper>

@@ -7,7 +7,9 @@ const HouseLists = ({ houses }) => {
   return (
     <StyledHouseLists>
       <h2>G.O.T's House</h2>
-      <HouseCard houseData="houseData" />
+      {data.map((houseData) => (
+        <HouseCard houseData={houseData} />
+      ))}
     </StyledHouseLists>
   );
 };

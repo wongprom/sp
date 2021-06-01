@@ -7,8 +7,7 @@ export const AppWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  width: 100%;
+  height: 100%;
 
   header {
     padding: 20px 10px;
