@@ -11,8 +11,24 @@ const HouseLists = () => {
   };
 
   useEffect(() => {
-    const tempdata = data?.map((item) => {
-      return { ...item, name: removeWordFromSentence('House', item.name) };
+    const images = [
+      'arryn',
+      'baratheon',
+      'greyjoy',
+      'lannister',
+      'martell',
+      'stark',
+      'targaryen',
+      'tully',
+      'tyrell',
+      'last',
+    ];
+    const tempdata = data?.map((item, index) => {
+      return {
+        ...item,
+        name: removeWordFromSentence('House', item.name),
+        imageHouse: images[index],
+      };
     });
     setTestData(tempdata);
   }, []);

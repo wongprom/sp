@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import houseLogoMartel from '../assets/images/house-logo-martel.jpeg';
 import sigilAlgood from '../assets/images/250px-House_Algood-sigil.webp';
+import { getImageByKey } from '../assets/mockData';
 
 const HouseCard = ({ houseData }, props) => {
-  const { name, ...rest } = houseData;
+  const { name, imageHouse, ...rest } = houseData;
 
   return (
     <StyledHouseCardWrapper>
       <div className="imageWrapper">
-        <img src={houseLogoMartel} alt="test" />
+        {/* <img src={houseLogoMartel} alt="test" /> */}
+        <img src={getImageByKey(imageHouse)} alt={name} />
       </div>
 
       <div className="infoBox">

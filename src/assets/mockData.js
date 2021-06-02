@@ -1,3 +1,31 @@
+import arryn from '../assets/images/houses/arryn.jpeg';
+import baratheon from '../assets/images/houses/baratheon.jpeg';
+import greyjoy from '../assets/images/houses/greyjoy.jpeg';
+import lannister from '../assets/images/houses/lannister.jpeg';
+import martell from '../assets/images/houses/martell.jpeg';
+import stark from '../assets/images/houses/stark.jpeg';
+import targaryen from '../assets/images/houses/targaryen.jpeg';
+import tully from '../assets/images/houses/tully.jpeg';
+import tyrell from '../assets/images/houses/tyrell.jpeg';
+import last from '../assets/images/houses/last.jpeg';
+
+const images = {
+  arryn,
+  baratheon,
+  greyjoy,
+  lannister,
+  martell,
+  stark,
+  targaryen,
+  tully,
+  tyrell,
+  last,
+};
+
+export const getImageByKey = (key) => {
+  return images[key];
+};
+
 export const data = [
   {
     url: 'https://www.anapioficeandfire.com/api/houses/1',
