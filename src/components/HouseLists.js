@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { data } from '../assets/mockData';
 import HouseCard from './HouseCard';
 
-const HouseLists = () => {
+const HouseLists = ({ setShowModal, setContextModal, toggleModal }) => {
   const [testData, setTestData] = useState(null);
 
   const removeWordFromSentence = (word, sentence) => {
@@ -37,7 +37,13 @@ const HouseLists = () => {
     <StyledHouseLists>
       <h2>G.O.T's House</h2>
       {testData?.map((houseData) => (
-        <HouseCard key={houseData.name} houseData={houseData} />
+        <HouseCard
+          key={houseData.name}
+          houseData={houseData}
+          setShowModal={setShowModal}
+          setContextModal={setContextModal}
+          toggleModal={toggleModal}
+        />
       ))}
     </StyledHouseLists>
   );
