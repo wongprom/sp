@@ -7,7 +7,15 @@ import axios from 'axios';
 
 const HouseLists = ({ setShowModal, setContextModal, toggleModal }) => {
   const [testData, setTestData] = useState(null);
-  // const axios = instance();
+
+  const removeWordFromSentence = (word, sentence) => {
+    return sentence.replace(word, '').trim();
+  };
+
+  const randomNumIndexRange = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
   const one = 'https://www.anapioficeandfire.com/api/houses?page=1&pageSize=50';
   const two = 'https://www.anapioficeandfire.com/api/houses?page=2&pageSize=50';
   const three =
@@ -49,11 +57,6 @@ const HouseLists = ({ setShowModal, setContextModal, toggleModal }) => {
       ])
       .then(
         axios.spread((...responses) => {
-          console.log(
-            '🚀 ~ file: HouseLists.js ~ line 52 ~ axios.spread ~ responses',
-            responses
-          );
-
           const responseOne = responses[0];
           const responseTwo = responses[1];
           const responesThree = responses[2];
@@ -64,11 +67,7 @@ const HouseLists = ({ setShowModal, setContextModal, toggleModal }) => {
           const responseEight = responses[7];
           const responesNine = responses[8];
 
-          console.log(
-            '🚀 ~ file: HouseLists.js ~ line 53 ~ axios.spread ~ responseOne.data',
-            responseOne.data
-          );
-          const temp = [
+          const allResponse = [
             ...responseOne.data,
             ...responseTwo.data,
             ...responesThree.data,
@@ -79,60 +78,33 @@ const HouseLists = ({ setShowModal, setContextModal, toggleModal }) => {
             ...responseEight.data,
             ...responesNine.data,
           ];
-          console.log(
-            '🚀 ~ file: HouseLists.js ~ line 72 ~ axios.spread ~ temp',
-            temp
-          );
-          setTestData(temp);
-          // use/access the results
+
+          const images = [
+            'arryn',
+            'baratheon',
+            'greyjoy',
+            'lannister',
+            'martell',
+            'stark',
+            'targaryen',
+            'tully',
+            'tyrell',
+            'last',
+          ];
+
+          const editedResponse = allResponse.map((house) => {
+            return {
+              ...house,
+              name: removeWordFromSentence('House', house.name),
+              imageHouse: images[randomNumIndexRange(0, 9)],
+            };
+          });
+          setTestData(editedResponse);
         })
       )
       .catch((errors) => {
-        console.log('errors ==> ', errors);
-        // react on errors.
+        console.error('Request errors ==> ', errors);
       });
-
-    // instance
-    //   .get('/houses?page=9&pageSize=50')
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log('response. ==> ', response);
-    //     setTestData(response.data);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-    //   .then(function () {
-    //     // always executed
-    //   });
-  }, []);
-
-  const removeWordFromSentence = (word, sentence) => {
-    return sentence.replace(word, '').trim();
-  };
-
-  useEffect(() => {
-    const images = [
-      'arryn',
-      'baratheon',
-      'greyjoy',
-      'lannister',
-      'martell',
-      'stark',
-      'targaryen',
-      'tully',
-      'tyrell',
-      'last',
-    ];
-    const tempdata = data?.map((item, index) => {
-      return {
-        ...item,
-        name: removeWordFromSentence('House', item.name),
-        imageHouse: images[index],
-      };
-    });
-    setTestData(tempdata);
   }, []);
 
   return (
