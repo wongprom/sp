@@ -33,7 +33,7 @@ export const StyledSearchInput = styled.div`
       color: white;
 
       input {
-        margin-top: 20px;
+        margin-top: 5px;
         font-size: 24px;
         height: 30px;
         border: 1px solid white;

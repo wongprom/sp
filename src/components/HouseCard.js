@@ -18,9 +18,9 @@ const HouseCard = ({ houseData, setContextModal, toggleModal }, props) => {
         <img src={getImageByKey(imageHouse)} alt={name} />
       </div>
       <div className="infoBox">
-        <div className="sigilWrapper">
+        {/* <div className="sigilWrapper">
           <img src={sigilAlgood} alt="" />
-        </div>
+        </div> */}
         <div className="textBox">
           <h3>{name}</h3>
         </div>
@@ -32,8 +32,13 @@ const HouseCard = ({ houseData, setContextModal, toggleModal }, props) => {
 export default HouseCard;
 
 export const StyledHouseCardWrapper = styled.div`
-  margin: 20px 10px;
-  border: 1px solid red;
+  @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@1,100;1,300&family=Cardo:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&display=swap');
+
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  margin-bottom: 10px;
   .imageWrapper {
     &:hover {
       cursor: pointer;
@@ -62,12 +67,16 @@ export const StyledHouseCardWrapper = styled.div`
       }
     }
     .textBox {
-      color: #aaa9ad;
       height: 60px;
       display: flex;
       justify-content: center;
       align-items: center;
       h3 {
+        all: initial;
+        color: #d5d5d7;
+        font-size: 24px;
+        font-family: 'MedievalSharp', cursive;
+        letter-spacing: 1.2px;
       }
     }
   }

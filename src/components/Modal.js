@@ -19,7 +19,8 @@ const Modal = ({ showModal, setShowModal, toggleModal, contextModal }) => {
         </ImageWrapper>
         <TextBoxWrapper>
           <h3>
-            {contextModal?.name} of region {contextModal.region}
+            {contextModal?.name.toUpperCase()}, of region{' '}
+            {contextModal.region.toUpperCase()}
           </h3>
           {contextModal.coatOfArms && (
             <p>
@@ -79,6 +80,7 @@ export const Overlay = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@1,100;1,300&family=Cardo:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&display=swap');
   position: fixed;
   top: 50%;
   left: 50%;
@@ -86,10 +88,13 @@ export const ModalWrapper = styled.div`
   z-index: 1000;
 
   width: 80%;
-  background-color: lightgray;
+  background-color: black;
   color: white;
-  padding: 20px;
+  /* padding: 20px; */
+  box-shadow: 0px 0px 21px 4px rgb(196 196 196 / 50%);
+  border-radius: 5px;
 `;
+
 export const ImageWrapper = styled.div`
   img {
     height: 100%;
@@ -99,8 +104,20 @@ export const ImageWrapper = styled.div`
 `;
 
 export const TextBoxWrapper = styled.div`
+  color: #d5d5d7;
+  padding: 20px;
+  p {
+    font-family: 'Cardo', serif;
+    color: white;
+    span {
+      color: #d5d5d7;
+    }
+  }
   h3 {
+    font-family: 'Cinzel Decorative', cursive;
     text-align: center;
+    letter-spacing: 1px;
+    text-decoration: underline;
   }
 `;
 export const CloseIconWrapper = styled.div`

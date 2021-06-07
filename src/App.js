@@ -1,4 +1,5 @@
 import './App.css';
+
 import styled from 'styled-components';
 import mainBackgroundImage from './assets/images/background-1.jpeg';
 import SearchInput from './components/SearchInput';
@@ -137,6 +138,7 @@ function App() {
       <header>
         <img src={gotImage} alt="Game of Thrones" />
       </header>
+      <h1>G.O.T's HOUSES</h1>
       <SearchInput
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -155,6 +157,7 @@ function App() {
 export default App;
 
 const AppWrapper = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@1,100;1,300&family=Cardo:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&display=swap');
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,10 +166,15 @@ const AppWrapper = styled.div`
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+  padding: 20px;
+  h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    color: white;
+  }
 
   header {
     padding: 20px 10px;
-    max-width: 600px;
+    max-width: 800px;
 
     img {
       width: 100%;
