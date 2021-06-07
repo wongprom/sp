@@ -1,6 +1,7 @@
 import './App.css';
+import styled from 'styled-components';
+import mainBackgroundImage from './assets/images/background-1.jpeg';
 import SearchInput from './components/SearchInput';
-import { AppWrapper } from './styledComponents/styles';
 import gotImage from './assets/images/got-logo.png';
 import HouseLists from './components/HouseLists';
 import { useEffect, useState } from 'react';
@@ -152,3 +153,25 @@ function App() {
 }
 
 export default App;
+
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(${mainBackgroundImage});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+
+  header {
+    padding: 20px 10px;
+    max-width: 600px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+`;
