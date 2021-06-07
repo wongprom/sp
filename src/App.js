@@ -10,15 +10,15 @@ import axios from 'axios';
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [contextModal, setContextModal] = useState(null);
-  const [testData, setTestData] = useState(null);
+  const [allHouses, setAllHouses] = useState(null);
   const [searchValue, setSearchValue] = useState('');
-  const [searchedData, setSearchedData] = useState(null);
+  const [filteredHouses, setFilteredHouses] = useState(null);
 
   useEffect(() => {
-    const results = testData?.filter((house) =>
+    const filteredResults = allHouses?.filter((house) =>
       house.name.toLowerCase().includes(searchValue.toLowerCase())
     );
-    setSearchedData(results);
+    setFilteredHouses(filteredResults);
   }, [searchValue]);
 
   const handleChange = (searchString) => {
@@ -118,7 +118,7 @@ function App() {
               imageHouse: images[randomNumIndexRange(0, 9)],
             };
           });
-          setTestData(editedResponse);
+          setAllHouses(editedResponse);
         })
       )
       .catch((errors) => {
@@ -130,7 +130,6 @@ function App() {
     <AppWrapper>
       <Modal
         showModal={showModal}
-        // setShowModal={setShowModal}
         toggleModal={toggleModal}
         contextModal={contextModal}
       />
@@ -143,7 +142,7 @@ function App() {
         handleChange={handleChange}
       />
       <HouseLists
-        testData={searchValue ? searchedData : testData}
+        houses={searchValue ? filteredHouses : allHouses}
         setShowModal={setShowModal}
         setContextModal={setContextModal}
         toggleModal={toggleModal}

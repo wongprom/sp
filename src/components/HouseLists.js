@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { data } from '../assets/mockData';
 import HouseCard from './HouseCard';
-import axios from 'axios';
-// import instance from '../assets/axios';
 
-const HouseLists = ({
-  setShowModal,
-  setContextModal,
-  toggleModal,
-  testData,
-}) => {
+const HouseLists = ({ setShowModal, setContextModal, toggleModal, houses }) => {
   return (
     <StyledHouseLists>
       <h2>G.O.T's House</h2>
-      {testData?.map((houseData) => (
+      {houses?.map((houseData) => (
         <HouseCard
           key={houseData.url}
           houseData={houseData}
