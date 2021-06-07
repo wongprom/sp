@@ -2,13 +2,17 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const SearchInput = () => {
+const SearchInput = ({ searchValue, handleChange }) => {
   return (
     <StyledSearchInput>
       <form>
         <label>
           Search House
-          <input type="text" />
+          <input
+            type="text"
+            value={searchValue}
+            onChange={(event) => handleChange(event.target.value)}
+          />
         </label>
       </form>
     </StyledSearchInput>
@@ -23,6 +27,7 @@ export const StyledSearchInput = styled.div`
   width: 100%;
   margin-top: 20px;
   form {
+    color: hotpink;
     width: 300px;
     label {
       color: white;
@@ -32,7 +37,7 @@ export const StyledSearchInput = styled.div`
         font-size: 24px;
         height: 30px;
         border: 1px solid white;
-        background-color: transparent;
+        background-color: white;
         width: 100%;
       }
     }

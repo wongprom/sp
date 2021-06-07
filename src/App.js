@@ -11,7 +11,19 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [contextModal, setContextModal] = useState(null);
   const [testData, setTestData] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
+  const [searchedData, setSearchedData] = useState(null);
 
+  useEffect(() => {
+    const results = testData?.filter((house) =>
+      house.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setSearchedData(results);
+  }, [searchValue]);
+
+  const handleChange = (searchString) => {
+    setSearchValue(searchString);
+  };
   const toggleModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -49,6 +61,7 @@ function App() {
   const requestNine = axios.get(nine);
 
   useEffect(() => {
+    console.count('Hur måbga gånger har vi fetchat data ==> ');
     axios
       .all([
         requestOne,
@@ -124,9 +137,13 @@ function App() {
       <header>
         <img src={gotImage} alt="Game of Thrones" />
       </header>
-      <SearchInput />
+      <SearchInput
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        handleChange={handleChange}
+      />
       <HouseLists
-        testData={testData}
+        testData={searchValue ? searchedData : testData}
         setShowModal={setShowModal}
         setContextModal={setContextModal}
         toggleModal={toggleModal}
