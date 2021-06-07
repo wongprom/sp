@@ -20,7 +20,7 @@ const Modal = ({ showModal, setShowModal, toggleModal, contextModal }) => {
         <TextBoxWrapper>
           <h3>
             {contextModal?.name.toUpperCase()}, of region{' '}
-            {contextModal.region.toUpperCase()}
+            {contextModal.region?.toUpperCase()}
           </h3>
           {contextModal.coatOfArms && (
             <p>
@@ -81,13 +81,13 @@ export const Overlay = styled.div`
 
 export const ModalWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@1,100;1,300&family=Cardo:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&display=swap');
+  width: 80%;
+  max-width: 470px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
-
-  width: 80%;
   background-color: black;
   color: white;
   /* padding: 20px; */
