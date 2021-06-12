@@ -1,6 +1,6 @@
 # SP - Project
 
-Smaller projects that displays all Houses from Game of Thrones
+Smaller project that displays all Houses from Game of Thrones
 
 ## Getting Started
 
