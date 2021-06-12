@@ -25,6 +25,6 @@ export const StyledHouseLists = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   max-width: 1800px;
-
+  margin-top: 50px;
   /* width: 100%; */
 `;

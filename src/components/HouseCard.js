@@ -36,8 +36,6 @@ export const StyledHouseCardWrapper = styled.div`
 
   max-width: 400px;
   padding: 10px;
-  border: 1px solid silver;
-  border-radius: 5px;
   margin-bottom: 10px;
   .imageWrapper {
     &:hover {
