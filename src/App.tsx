@@ -18,7 +18,7 @@ const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [contextModal, setContextModal] = useState(null);
   const [allHouses, setAllHouses] = useState<StateAllHousesType>(null);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const [filteredHouses, setFilteredHouses] =
     useState<StateFilteredHouses>(null);
 
@@ -147,14 +147,7 @@ const App: React.FC = () => {
         <img src={gotImage} alt="Game of Thrones" />
       </header>
       <h1>G.O.T's HOUSES</h1>
-      {
-        <SearchInput
-          // @ts-ignore
-          setSearchValue={setSearchValue}
-          searchValue={searchValue}
-          handleChange={handleChange}
-        />
-      }
+      {<SearchInput searchValue={searchValue} handleChange={handleChange} />}
 
       <HouseLists
         houses={searchValue ? filteredHouses : allHouses}

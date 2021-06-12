@@ -1,8 +1,12 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
-const SearchInput = ({ searchValue, handleChange }) => {
+type PropsType = {
+  searchValue: string;
+  handleChange: (string: string) => void;
+};
+
+const SearchInput: React.FC<PropsType> = ({ searchValue, handleChange }) => {
   return (
     <StyledSearchInput>
       <form>
