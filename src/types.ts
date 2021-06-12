@@ -1,3 +1,5 @@
+export type AllHousesType = HouseType[] | null | undefined;
+export type FilteredHouses = HouseType[] | null | undefined;
 export type HouseType = {
   ancestralWeapons: string[];
   cadetBranches: [];

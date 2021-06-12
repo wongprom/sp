@@ -8,24 +8,19 @@ import HouseLists from './components/HouseLists';
 import { useEffect, useState } from 'react';
 import Modal from './components/Modal';
 import axios from 'axios';
-import { HouseType } from './types';
-
-export type StateAllHousesType = HouseType[] | null | undefined;
-export type FilteredResults = any[] | null | undefined;
-export type StateFilteredHouses = HouseType[] | null | undefined;
+import { HouseType, AllHousesType, FilteredHouses } from './types';
 
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [contextModal, setContextModal] = useState<null | HouseType>(null);
-  const [allHouses, setAllHouses] = useState<StateAllHousesType>(null);
+  const [allHouses, setAllHouses] = useState<AllHousesType>(null);
   console.log('🚀 ~ file: App.tsx ~ line 21 ~ allHouses', allHouses);
   const [searchValue, setSearchValue] = useState<string>('');
-  const [filteredHouses, setFilteredHouses] =
-    useState<StateFilteredHouses>(null);
+  const [filteredHouses, setFilteredHouses] = useState<FilteredHouses>(null);
   console.log('🚀 ~ file: App.tsx ~ line 24 ~ filteredHouses', filteredHouses);
 
   useEffect(() => {
-    const filteredResults: FilteredResults = allHouses?.filter!((house) =>
+    const filteredResults: FilteredHouses = allHouses?.filter!((house) =>
       house.name.toLowerCase().includes(searchValue.toLowerCase())
     );
     console.log('filteredResults ==> ', filteredResults);

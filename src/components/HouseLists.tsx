@@ -1,14 +1,13 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 import HouseCard from './HouseCard';
-import { HouseType } from '../types';
-import { StateFilteredHouses, StateAllHousesType } from '../App';
+import { HouseType, FilteredHouses, AllHousesType } from '../types';
 
 type PropsType = {
   setShowModal: Dispatch<SetStateAction<boolean>>;
   setContextModal: Dispatch<SetStateAction<HouseType | null>>;
   toggleModal: () => void;
-  houses: StateAllHousesType | StateFilteredHouses;
+  houses: AllHousesType | FilteredHouses;
 };
 
 const HouseLists: React.FC<PropsType> = ({
