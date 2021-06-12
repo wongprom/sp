@@ -26,7 +26,7 @@ const Modal: React.FC<PropsType> = ({
           <CloseIconWrapper onClick={toggleModal}>
             <XIcon />
           </CloseIconWrapper>
-          <img src={getImageByKey(contextModal?.imageHouse)} />
+          <img src={getImageByKey(contextModal?.imageHouse)} alt="" />
         </ImageWrapper>
         <TextBoxWrapper>
           <h3>

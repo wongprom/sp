@@ -14,19 +14,16 @@ const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [contextModal, setContextModal] = useState<null | HouseType>(null);
   const [allHouses, setAllHouses] = useState<AllHousesType>(null);
-  console.log('🚀 ~ file: App.tsx ~ line 21 ~ allHouses', allHouses);
   const [searchValue, setSearchValue] = useState<string>('');
   const [filteredHouses, setFilteredHouses] = useState<FilteredHouses>(null);
-  console.log('🚀 ~ file: App.tsx ~ line 24 ~ filteredHouses', filteredHouses);
 
   useEffect(() => {
     const filteredResults: FilteredHouses = allHouses?.filter!((house) =>
       house.name.toLowerCase().includes(searchValue.toLowerCase())
     );
-    console.log('filteredResults ==> ', filteredResults);
 
     setFilteredHouses(filteredResults);
-  }, [searchValue]);
+  }, [searchValue, allHouses]);
 
   const handleChange = (searchString: string) => {
     setSearchValue(searchString);
@@ -41,34 +38,35 @@ const App: React.FC = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  const one = 'https://www.anapioficeandfire.com/api/houses?page=1&pageSize=50';
-  const two = 'https://www.anapioficeandfire.com/api/houses?page=2&pageSize=50';
-  const three =
-    'https://www.anapioficeandfire.com/api/houses?page=3&pageSize=50';
-  const four =
-    'https://www.anapioficeandfire.com/api/houses?page=4&pageSize=50';
-  const five =
-    'https://www.anapioficeandfire.com/api/houses?page=5&pageSize=50';
-  const six = 'https://www.anapioficeandfire.com/api/houses?page=6&pageSize=50';
-  const seven =
-    'https://www.anapioficeandfire.com/api/houses?page=7&pageSize=50';
-  const eight =
-    'https://www.anapioficeandfire.com/api/houses?page=8&pageSize=50';
-  const nine =
-    'https://www.anapioficeandfire.com/api/houses?page=9&pageSize=50';
-
-  const requestOne = axios.get(one);
-  const requestTwo = axios.get(two);
-  const requestThree = axios.get(three);
-  const requestFour = axios.get(four);
-  const requestFive = axios.get(five);
-  const requestSix = axios.get(six);
-  const requestSeven = axios.get(seven);
-  const requestEight = axios.get(eight);
-  const requestNine = axios.get(nine);
-
   useEffect(() => {
-    console.count('Hur måbga gånger har vi fetchat data ==> ');
+    const one =
+      'https://www.anapioficeandfire.com/api/houses?page=1&pageSize=50';
+    const two =
+      'https://www.anapioficeandfire.com/api/houses?page=2&pageSize=50';
+    const three =
+      'https://www.anapioficeandfire.com/api/houses?page=3&pageSize=50';
+    const four =
+      'https://www.anapioficeandfire.com/api/houses?page=4&pageSize=50';
+    const five =
+      'https://www.anapioficeandfire.com/api/houses?page=5&pageSize=50';
+    const six =
+      'https://www.anapioficeandfire.com/api/houses?page=6&pageSize=50';
+    const seven =
+      'https://www.anapioficeandfire.com/api/houses?page=7&pageSize=50';
+    const eight =
+      'https://www.anapioficeandfire.com/api/houses?page=8&pageSize=50';
+    const nine =
+      'https://www.anapioficeandfire.com/api/houses?page=9&pageSize=50';
+
+    const requestOne = axios.get(one);
+    const requestTwo = axios.get(two);
+    const requestThree = axios.get(three);
+    const requestFour = axios.get(four);
+    const requestFive = axios.get(five);
+    const requestSix = axios.get(six);
+    const requestSeven = axios.get(seven);
+    const requestEight = axios.get(eight);
+    const requestNine = axios.get(nine);
     axios
       .all([
         requestOne,
