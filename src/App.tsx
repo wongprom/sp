@@ -8,31 +8,39 @@ import HouseLists from './components/HouseLists';
 import { useEffect, useState } from 'react';
 import Modal from './components/Modal';
 import axios from 'axios';
+import { HouseType } from './types';
 
-function App() {
+type StateAllHousesType = HouseType[] | null;
+type FilteredResults = any[] | null | undefined;
+type StateFilteredHouses = any[] | null | undefined;
+
+const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [contextModal, setContextModal] = useState(null);
-  const [allHouses, setAllHouses] = useState(null);
+  const [allHouses, setAllHouses] = useState<StateAllHousesType>(null);
   const [searchValue, setSearchValue] = useState('');
-  const [filteredHouses, setFilteredHouses] = useState(null);
+  const [filteredHouses, setFilteredHouses] =
+    useState<StateFilteredHouses>(null);
 
   useEffect(() => {
-    const filteredResults = allHouses?.filter((house) =>
+    const filteredResults: FilteredResults = allHouses?.filter!((house) =>
       house.name.toLowerCase().includes(searchValue.toLowerCase())
     );
+    console.log('filteredResults ==> ', filteredResults);
+
     setFilteredHouses(filteredResults);
   }, [searchValue]);
 
-  const handleChange = (searchString) => {
+  const handleChange = (searchString: string) => {
     setSearchValue(searchString);
   };
   const toggleModal = () => {
     setShowModal((prev) => !prev);
   };
-  const removeWordFromSentence = (word, sentence) => {
+  const removeWordFromSentence = (word: string, sentence: string) => {
     return sentence.replace(word, '').trim();
   };
-  const randomNumIndexRange = (min, max) => {
+  const randomNumIndexRange = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
@@ -139,11 +147,15 @@ function App() {
         <img src={gotImage} alt="Game of Thrones" />
       </header>
       <h1>G.O.T's HOUSES</h1>
-      <SearchInput
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        handleChange={handleChange}
-      />
+      {
+        <SearchInput
+          // @ts-ignore
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+          handleChange={handleChange}
+        />
+      }
+
       <HouseLists
         houses={searchValue ? filteredHouses : allHouses}
         setShowModal={setShowModal}
@@ -152,7 +164,7 @@ function App() {
       />
     </AppWrapper>
   );
-}
+};
 
 export default App;
 
