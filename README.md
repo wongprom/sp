@@ -17,3 +17,4 @@ Smaller projects that displays all Houses from Game of Thrones
 - [Axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js
 - [Heroicons](https://heroicons.com/) - Beautiful hand-crafted SVG icons,
 - [Typescript](https://www.typescriptlang.org/) - Typed JavaScript at Any Scale.
+- [Game Of Thrones API](https://anapioficeandfire.com/Documentation) - All the data from the universe of Ice And Fire you've ever wanted!
