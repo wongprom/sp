@@ -10,17 +10,19 @@ import Modal from './components/Modal';
 import axios from 'axios';
 import { HouseType } from './types';
 
-type StateAllHousesType = HouseType[] | null;
-type FilteredResults = any[] | null | undefined;
-type StateFilteredHouses = any[] | null | undefined;
+export type StateAllHousesType = HouseType[] | null | undefined;
+export type FilteredResults = any[] | null | undefined;
+export type StateFilteredHouses = HouseType[] | null | undefined;
 
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-  const [contextModal, setContextModal] = useState(null);
+  const [contextModal, setContextModal] = useState<null | HouseType>(null);
   const [allHouses, setAllHouses] = useState<StateAllHousesType>(null);
+  console.log('🚀 ~ file: App.tsx ~ line 21 ~ allHouses', allHouses);
   const [searchValue, setSearchValue] = useState<string>('');
   const [filteredHouses, setFilteredHouses] =
     useState<StateFilteredHouses>(null);
+  console.log('🚀 ~ file: App.tsx ~ line 24 ~ filteredHouses', filteredHouses);
 
   useEffect(() => {
     const filteredResults: FilteredResults = allHouses?.filter!((house) =>
@@ -150,8 +152,8 @@ const App: React.FC = () => {
       {<SearchInput searchValue={searchValue} handleChange={handleChange} />}
 
       <HouseLists
-        houses={searchValue ? filteredHouses : allHouses}
         setShowModal={setShowModal}
+        houses={searchValue ? filteredHouses : allHouses}
         setContextModal={setContextModal}
         toggleModal={toggleModal}
       />
