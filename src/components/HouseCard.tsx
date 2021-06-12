@@ -9,10 +9,11 @@ type PropsType = {
   toggleModal: () => void;
 };
 
-const HouseCard: React.FC<PropsType> = (
-  { houseData, setContextModal, toggleModal },
-  props
-) => {
+const HouseCard: React.FC<PropsType> = ({
+  houseData,
+  setContextModal,
+  toggleModal,
+}) => {
   const { name, imageHouse } = houseData;
 
   return (

@@ -16,8 +16,6 @@ const Modal: React.FC<PropsType> = ({
   toggleModal,
   contextModal,
 }) => {
-  console.log('🚀 ~ file: Modal.tsx ~ line 20 ~ contextModal', contextModal);
-
   if (!showModal) return null;
 
   return ReactDom.createPortal(
@@ -28,37 +26,32 @@ const Modal: React.FC<PropsType> = ({
           <CloseIconWrapper onClick={toggleModal}>
             <XIcon />
           </CloseIconWrapper>
-          {/* @ts-ignore */}
-          <img src={getImageByKey(contextModal.imageHouse)} />
+          <img src={getImageByKey(contextModal?.imageHouse)} />
         </ImageWrapper>
         <TextBoxWrapper>
           <h3>
-            {/* @ts-ignore */}
-            {contextModal?.name.toUpperCase()}, of region {/* @ts-ignore */}
-            {contextModal.region?.toUpperCase()}
+            {contextModal?.name.toUpperCase()}, of region
+            {contextModal?.region?.toUpperCase()}
           </h3>
-          {/* @ts-ignore */}
-          {contextModal.coatOfArms && (
+          {contextModal?.coatOfArms && (
             <p>
               <span>
                 <strong>Coat Of Arms:</strong>{' '}
               </span>
-              {/* @ts-ignore */}
-              {contextModal.coatOfArms}
+
+              {contextModal?.coatOfArms}
             </p>
           )}
-          {/* @ts-ignore */}
-          {contextModal.words && (
+          {contextModal?.words && (
             <p>
               <span>
                 <strong>Words:</strong>{' '}
               </span>
-              {/* @ts-ignore */}
-              {contextModal.words}
+
+              {contextModal?.words}
             </p>
           )}
-          {/* @ts-ignore */}
-          {contextModal.titles && contextModal.titles[0] !== '' && (
+          {contextModal?.titles && contextModal?.titles[0] !== '' && (
             <>
               <p>
                 <span>
@@ -66,28 +59,24 @@ const Modal: React.FC<PropsType> = ({
                 </span>
               </p>
               <ul>
-                {/* @ts-ignore */}
-                {contextModal.titles.map((title, index) => {
+                {contextModal?.titles.map((title, index) => {
                   return <li key={title}>{title}</li>;
                 })}
               </ul>
             </>
           )}
-          {/* @ts-ignore */}
-          {contextModal.swornMembers && (
+          {contextModal?.swornMembers && (
             <p>
               <span>
                 <strong>Sworn Members:</strong>{' '}
               </span>
-              {/* @ts-ignore */}
-              {contextModal.swornMembers.length}
+              {contextModal?.swornMembers.length}
             </p>
           )}
         </TextBoxWrapper>
       </ModalWrapper>
     </>,
-    // @ts-ignore
-    document.getElementById('modal-root')
+    document.getElementById('modal-root')!
   );
 };
 
@@ -114,7 +103,6 @@ export const ModalWrapper = styled.div`
   z-index: 1000;
   background-color: black;
   color: white;
-  /* padding: 20px; */
   box-shadow: 0px 0px 21px 4px rgb(196 196 196 / 50%);
   border-radius: 5px;
 `;
