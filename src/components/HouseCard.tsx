@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
-import sigilAlgood from '../assets/images/250px-House_Algood-sigil.webp';
 import { getImageByKey } from '../assets/mockData';
+import { HouseType } from '../types';
 
-const HouseCard = ({ houseData, setContextModal, toggleModal }, props) => {
-  const { name, imageHouse, ...rest } = houseData;
+type PropsType = {
+  houseData: HouseType;
+  setContextModal: Dispatch<SetStateAction<HouseType | null>>;
+  toggleModal: () => void;
+};
+
+const HouseCard: React.FC<PropsType> = (
+  { houseData, setContextModal, toggleModal },
+  props
+) => {
+  const { name, imageHouse } = houseData;
 
   return (
     <StyledHouseCardWrapper>
@@ -18,9 +27,6 @@ const HouseCard = ({ houseData, setContextModal, toggleModal }, props) => {
         <img src={getImageByKey(imageHouse)} alt={name} />
       </div>
       <div className="infoBox">
-        {/* <div className="sigilWrapper">
-          <img src={sigilAlgood} alt="" />
-        </div> */}
         <div className="textBox">
           <h3>{name}</h3>
         </div>
