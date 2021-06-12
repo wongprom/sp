@@ -1,5 +1,4 @@
 import './App.css';
-
 import styled from 'styled-components';
 import mainBackgroundImage from './assets/images/background-1.jpeg';
 import SearchInput from './components/SearchInput';
